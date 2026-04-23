@@ -1,0 +1,130 @@
+.navbar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: var(--nav-w);
+  background: #373B53;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+  overflow: hidden;
+  transition: background var(--tr);
+}
+
+[data-theme="dark"] .navbar { background: #1E2139; }
+
+/* ── Logo ── */
+.navbar__logo {
+  width: var(--nav-w);
+  height: var(--nav-w);
+  background: #7C5DFA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: default;
+}
+.navbar__logo::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 50%;
+  background: #9277FF;
+  border-radius: var(--radius-xl) 0 0 0;
+}
+.navbar__logo svg { position: relative; z-index: 1; }
+
+/* ── Controls cluster ── */
+.navbar__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar__theme-btn {
+  width: var(--nav-w);
+  height: 56px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #858BB2;
+  transition: color var(--tr);
+  flex-shrink: 0;
+}
+.navbar__theme-btn:hover { color: #DFE3FA; }
+
+.navbar__divider {
+  width: 100%;
+  height: 1px;
+  background: #494E6E;
+}
+
+.navbar__avatar-wrap {
+  width: var(--nav-w);
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #828FA3;
+  object-fit: cover;
+  cursor: pointer;
+  transition: border-color var(--tr);
+}
+.navbar__avatar:hover { border-color: #DFE3FA; }
+
+/* ── Mobile: horizontal top bar ── */
+@media (max-width: 768px) {
+  .navbar {
+    position: fixed;
+    width: 100%;
+    height: var(--nav-h);
+    top: 0; left: 0; bottom: auto;
+    flex-direction: row;
+    border-radius: 0;
+  }
+
+  .navbar__logo {
+    width: var(--nav-h);
+    height: var(--nav-h);
+    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+    flex-shrink: 0;
+  }
+
+  /* Controls go to the far RIGHT on mobile */
+  .navbar__controls {
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    margin-left: auto;
+  }
+
+  .navbar__theme-btn {
+    width: 56px;
+    height: var(--nav-h);
+  }
+
+  .navbar__divider {
+    width: 1px;
+    height: var(--nav-h);
+  }
+
+  .navbar__avatar-wrap {
+    width: 72px;
+    height: var(--nav-h);
+  }
+}

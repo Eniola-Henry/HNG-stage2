@@ -1,0 +1,89 @@
+.invoice-card-wrapper {
+  list-style: none;
+  animation: staggerUp 0.35s ease both;
+}
+
+.invoice-card {
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr 140px 104px 7px;
+  align-items: center;
+  gap: 20px;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 0 32px;
+  height: 72px;
+  width: 100%;
+  border: 1px solid transparent;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font-family: var(--font);
+  color: var(--txt);
+  text-align: left;
+  transition: border-color var(--tr), box-shadow var(--tr), transform var(--tr);
+}
+.invoice-card:hover {
+  border-color: #7C5DFA;
+  transform: translateY(-1px);
+}
+.invoice-card:active { transform: translateY(0); }
+
+/* Cells */
+.invoice-card__id {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+}
+.invoice-card__id-hash { color: #7E88C3; }
+
+.invoice-card__due {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--txt-muted);
+  letter-spacing: -0.23px;
+}
+
+.invoice-card__client {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--txt-muted);
+  text-align: right;
+  letter-spacing: -0.23px;
+}
+
+.invoice-card__amount {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  text-align: right;
+}
+
+.invoice-card__badge {
+  display: flex;
+  justify-content: center;
+}
+
+.invoice-card__arrow { color: #7C5DFA; }
+
+/* ── Mobile layout ── */
+@media (max-width: 768px) {
+  .invoice-card {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    height: auto;
+    gap: 10px 8px;
+    padding: 24px;
+  }
+
+  /* Row 1 */
+  .invoice-card__id     { grid-column: 1; grid-row: 1; }
+  .invoice-card__client { grid-column: 2; grid-row: 1; text-align: right; }
+
+  /* Row 2 */
+  .invoice-card__due    { grid-column: 1; grid-row: 2; }
+
+  /* Row 3 */
+  .invoice-card__amount { grid-column: 1; grid-row: 3; text-align: left; font-size: 15px; }
+  .invoice-card__badge  { grid-column: 2; grid-row: 3; justify-content: flex-end; align-items: center; }
+
+  .invoice-card__arrow  { display: none; }
+}

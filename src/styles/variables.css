@@ -1,0 +1,54 @@
+
+:root {
+  --color-purple:        #7C5DFA;
+  --color-purple-hover:  #9277FF;
+  --color-dark-navy:     #0C0E16;
+  --color-dark-blue:     #1E2139;
+  --color-dark-mid:      #252945;
+  --color-light-blue:    #DFE3FA;
+  --color-light-grey:    #F8F8FB;
+  --color-grey-mid:      #888EB0;
+  --color-grey-light:    #7E88C3;
+  --color-white:         #FFFFFF;
+  --color-danger:        #EC5757;
+  --color-danger-hover:  #FF9797;
+  --color-success:       #33D69F;
+  --color-warning:       #FF8F00;
+  --badge-paid-bg:       rgba(51,  214, 159, 0.06);
+  --badge-pending-bg:    rgba(255, 143,   0, 0.06);
+  --badge-draft-bg:      rgba(55,   59,  83, 0.06);
+  --badge-draft-color:   #373B53;
+  --bg:        #F8F8FB;
+  --surface:   #FFFFFF;
+  --surface2:  #F8F8FB;
+  --border:    #DFE3FA;
+  --txt:       #0C0E16;
+  --txt-muted: #888EB0;
+  --txt-mid:   #7E88C3;
+  --nav-w: 103px;
+  --nav-h:  80px;
+  --radius-sm: 4px;
+  --radius:    6px;
+  --radius-lg: 8px;
+  --radius-xl: 20px;
+  --shadow:    0 10px 10px -10px rgba(72, 84, 159, 0.10);
+  --shadow-lg: 0 20px 48px      rgba(72, 84, 159, 0.18);
+  --tr: 0.2s ease;
+  --font: 'League Spartan', sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg:        #141625;
+  --surface:   #1E2139;
+  --surface2:  #252945;
+  --border:    #252945;
+  --txt:       #FFFFFF;
+  --txt-muted: #DFE3FA;
+  --txt-mid:   #888EB0;
+
+  --badge-draft-bg:    rgba(223, 227, 250, 0.06);
+  --badge-draft-color: #DFE3FA;
+
+  --shadow:    0 10px 10px -10px rgba(0, 0, 0, 0.28);
+  --shadow-lg: 0 20px 48px      rgba(0, 0, 0, 0.42);
+}

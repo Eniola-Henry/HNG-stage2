@@ -1,0 +1,538 @@
+
+.invoice-form__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 300;
+  animation: fadeIn 0.25s ease;
+}
+
+.invoice-form__panel {
+  position: fixed;
+  top: 0;
+  left: var(--nav-w);
+  bottom: 0;
+  width: min(616px, calc(100vw - var(--nav-w)));
+  background: var(--bg);
+  z-index: 301;
+  border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+  overflow-y: auto;
+  animation: slideInLeft 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.invoice-form__content {
+  padding: 56px 56px 64px;
+}
+
+.invoice-form__title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--txt);
+  margin-bottom: 46px;
+}
+.invoice-form__title-hash { color: #7E88C3; }
+
+.invoice-form__fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 0 0;
+}
+.invoice-form__fieldset + .invoice-form__fieldset { margin-top: 40px; }
+
+.invoice-form__section-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  color: #7C5DFA;
+  margin-bottom: 24px;
+}
+
+.invoice-form__grid {
+  display: grid;
+  gap: 24px;
+}
+.invoice-form__grid--2col { grid-template-columns: 1fr 1fr; }
+.invoice-form__grid--3col { grid-template-columns: 1fr 1fr 1fr; }
+.invoice-form__field--full { grid-column: 1 / -1; }
+
+.invoice-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.invoice-form__label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 500;
+  color: #7E88C3;
+  letter-spacing: -0.1px;
+}
+.invoice-form__label--error { color: #EC5757; }
+.invoice-form__err-note {
+  font-size: 10px;
+  font-weight: 600;
+  color: #EC5757;
+}
+
+.invoice-form__input {
+  height: 48px;
+  padding: 0 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--txt);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  outline: none;
+  width: 100%;
+  transition: border-color var(--tr);
+  appearance: none;
+  -webkit-appearance: none;
+}
+.invoice-form__input:focus { border-color: #7C5DFA; }
+.invoice-form__input--error { border-color: #EC5757; }
+.invoice-form__input::placeholder { color: #888EB0; font-weight: 400; }
+
+[data-theme="dark"] .invoice-form__input {
+  background: #252945;
+  border-color: #252945;
+  color: #FFFFFF;
+}
+[data-theme="dark"] .invoice-form__input:focus  { border-color: #7C5DFA; }
+[data-theme="dark"] .invoice-form__input--error { border-color: #EC5757; }
+
+.invoice-form__input-icon-wrap {
+  position: relative;
+}
+.invoice-form__input-icon-wrap .invoice-form__input {
+  padding-right: 44px;
+}
+.invoice-form__input-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.invoice-form__input--date {
+  cursor: pointer;
+}
+.invoice-form__input--date::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 48px;
+  height: 100%;
+}
+.invoice-form__input:hover {
+  border-color: #7C5DFA;
+}
+
+[data-theme="dark"] .invoice-form__input:hover {
+  border-color: #7C5DFA;
+}
+
+.invoice-form__input--error:hover {
+  border-color: #EC5757;
+}
+
+.invoice-form__select {
+  cursor: pointer;
+}
+.invoice-form__input-icon--select {
+  pointer-events: none;
+}
+.invoice-form__select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: all var(--tr);
+}
+.invoice-form__select {
+  height: 48px;
+  padding: 0 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-weight: 700;
+  cursor: pointer;
+   transition: all var(--tr);
+}
+.invoice-form__select:hover {
+  border-color: #7C5DFA;
+  box-shadow: 0 0 0 2px rgba(124, 93, 250, 0.08);
+}
+
+.invoice-form__items-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.38px;
+  color: #777F98;
+  margin: 56px 0 16px;
+}
+
+.invoice-form__item-cols {
+  display: grid;
+  grid-template-columns: 1fr 64px 100px auto 20px;
+  gap: 16px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #7E88C3;
+  letter-spacing: -0.1px;
+}
+.invoice-form__item-cols span:nth-child(2),
+.invoice-form__item-cols span:nth-child(3) { text-align: center; }
+.invoice-form__item-cols span:nth-child(4)  { text-align: right; min-width: 70px; }
+
+.invoice-form__item-row {
+  display: grid;
+  grid-template-columns: 1fr 64px 100px auto 20px;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 18px;
+  animation: slideUpFade 0.25s ease;
+}
+
+.invoice-form__item-total {
+  font-size: 12px;
+  font-weight: 700;
+  color: #888EB0;
+  text-align: right;
+  white-space: nowrap;
+  min-width: 70px;
+}
+
+.invoice-form__item-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888EB0;
+  width: 20px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  transition: color var(--tr);
+}
+.invoice-form__item-delete:hover { color: #EC5757; }
+
+.invoice-form__items-error {
+  font-size: 10px;
+  font-weight: 600;
+  color: #EC5757;
+  margin-top: 4px;
+}
+/* ════════════════════════════════════════════
+   CUSTOM CALENDAR DATE PICKER
+   Matches Figma exactly — no native input used
+════════════════════════════════════════════ */
+.date-field {
+  position: relative;
+  width: 100%;
+}
+
+/* Trigger button — looks identical to other form inputs */
+.date-field__trigger {
+  width: 100%;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--txt);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  text-align: left;
+}
+.date-field__trigger:hover,
+.date-field__trigger--open { border-color: #7C5DFA; }
+.date-field__trigger:focus  { outline: none; border-color: #7C5DFA; }
+
+[data-theme="dark"] .date-field__trigger {
+  background: #252945;
+  border-color: #252945;
+  color: #FFFFFF;
+}
+[data-theme="dark"] .date-field__trigger:hover,
+[data-theme="dark"] .date-field__trigger--open { border-color: #7C5DFA; }
+
+.date-field__text { flex: 1; }
+.date-field__icon { display: flex; align-items: center; flex-shrink: 0; }
+
+/* ── Calendar popup card ── */
+.date-field__calendar {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 400;
+  background: var(--surface);
+  border-radius: 8px;
+  box-shadow: 0 10px 40px -4px rgba(72, 84, 159, 0.25);
+  padding: 24px;
+  width: 260px;
+  animation: fadeDown 0.15s ease;
+}
+[data-theme="dark"] .date-field__calendar {
+  background: #1E2139;
+  box-shadow: 0 10px 40px -4px rgba(0, 0, 0, 0.5);
+}
+
+/* Month navigation row */
+.cal__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.cal__month-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  color: var(--txt);
+}
+.cal__nav-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.15s ease;
+  padding: 0;
+}
+.cal__nav-btn:hover { background: rgba(124, 93, 250, 0.1); }
+
+/* 7-column grid for day names + day cells */
+.cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+/* Day name headers: Su Mo Tu We Th Fr Sa */
+.cal__day-name {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: -0.15px;
+  color: #888EB0;
+  text-align: center;
+  padding: 4px 0 10px;
+}
+
+/* Day number cells */
+.cal__day {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  color: var(--txt);
+  border: none;
+  background: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  padding: 0;
+}
+.cal__day:hover:not(.cal__day--other):not(.cal__day--selected) {
+  background: rgba(124, 93, 250, 0.1);
+  color: #7C5DFA;
+}
+
+/* Days from previous/next month — muted */
+.cal__day--other {
+  color: #888EB0;
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Today — purple text, no background */
+.cal__day--today {
+  color: #7C5DFA;
+}
+
+/* Selected day — purple circle, white text */
+.cal__day--selected {
+  background: #7C5DFA;
+  color: #FFFFFF;
+}
+.cal__day--selected:hover {
+  background: #9277FF;
+  color: #FFFFFF;
+}
+/* ════════════════════════════════════════════
+   PAYMENT TERMS CUSTOM DROPDOWN
+   Matches Figma: white card, dividers between
+   options, purple on selected + hover
+════════════════════════════════════════════ */
+.custom-terms {
+  position: relative;
+  width: 100%;
+}
+
+/* Trigger button — same height/style as other inputs */
+.custom-terms__trigger {
+  width: 100%;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--txt);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  text-align: left;
+}
+.custom-terms__trigger:hover { border-color: #7C5DFA; }
+.custom-terms__trigger:focus { outline: none; border-color: #7C5DFA; }
+
+[data-theme="dark"] .custom-terms__trigger {
+  background: #252945;
+  border-color: #252945;
+  color: #FFFFFF;
+}
+[data-theme="dark"] .custom-terms__trigger:hover { border-color: #7C5DFA; }
+
+/* Dropdown list panel */
+.custom-terms__list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 36px -2px rgba(72, 84, 159, 0.22);
+  z-index: 400;
+  list-style: none;
+  padding: 0;
+  overflow: hidden;
+  animation: fadeDown 0.15s ease;
+}
+
+[data-theme="dark"] .custom-terms__list {
+  background: #1E2139;
+  box-shadow: 0 10px 36px -2px rgba(0, 0, 0, 0.45);
+}
+
+/* Each option row */
+.custom-terms__option {
+  padding: 16px 20px;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  color: var(--txt);
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.15s ease;
+}
+.custom-terms__option:last-child { border-bottom: none; }
+
+/* Hover state */
+.custom-terms__option:hover { color: #7C5DFA; }
+
+/* Currently selected option */
+.custom-terms__option--selected { color: #7C5DFA; }
+/* ── Add item button ── */
+.invoice-form__add-item-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  background: #F9FAFE;
+  color: #7E88C3;
+  margin-top: 8px;
+  transition: background var(--tr), color var(--tr);
+}
+[data-theme="dark"] .invoice-form__add-item-btn {
+  background: #252945;
+  color: #DFE3FA;
+}
+.invoice-form__add-item-btn:hover { background: #DFE3FA; color: #0C0E16; }
+[data-theme="dark"] .invoice-form__add-item-btn:hover { background: #DFE3FA; color: #1E2139; }
+
+/* ── Action buttons row ── */
+.invoice-form__actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 32px;
+  padding-bottom: 16px;
+}
+.invoice-form__spacer { flex: 1; }
+
+/* ── Global error block ── */
+.invoice-form__global-errors { margin-bottom: 24px; }
+.invoice-form__global-error {
+  font-size: 10px;
+  font-weight: 600;
+  color: #EC5757;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .invoice-form__panel {
+    top: var(--nav-h);
+    left: 0;
+    width: 100vw;
+    border-radius: 0;
+  }
+  .invoice-form__content { padding: 40px 24px 64px; }
+  .invoice-form__grid--2col { grid-template-columns: 1fr; }
+  .invoice-form__grid--3col { grid-template-columns: 1fr 1fr; }
+  .invoice-form__item-cols { grid-template-columns: 1fr 48px 80px auto 20px; }
+  .invoice-form__item-row  { grid-template-columns: 1fr 48px 80px auto 20px; }
+}
+
+@media (max-width: 480px) {
+  .invoice-form__item-cols { display: none; }
+  .invoice-form__item-row { grid-template-columns: 1fr; gap: 8px; }
+  .invoice-form__item-total { text-align: left; }
+  .invoice-form__item-delete { height: auto; padding: 8px 0; }
+  .invoice-form__actions .btn { font-size: 11px; padding: 0 16px; }
+}
