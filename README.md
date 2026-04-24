@@ -300,14 +300,6 @@ vercel
 ## 🔮 Improvements Beyond Requirements
 
 1. **Stagger animations** — Invoice cards animate in one-by-one using CSS `animation-delay`
-2. **Custom payment terms dropdown** — Fully styled to match Figma spec, not a native select
-3. **Custom date display** — Shows formatted date (`21 Aug 2021`) instead of raw `YYYY-MM-DD`
-4. **7 sample invoices** — One more than required (spec says 6), covers all three statuses
-5. **Real profile photo** — Avatar uses an actual photo, not a placeholder initial
-6. **Custom empty state illustration** — Uses the uploaded image, not a generic placeholder
-7. **Deep utility separation** — `formatters.js` and `invoiceHelpers.js` are completely separate from UI logic
-8. **Consistent BEM naming** — All CSS classes follow `component__element--modifier` convention
-
 ---
 
 ## 📦 Dependencies
