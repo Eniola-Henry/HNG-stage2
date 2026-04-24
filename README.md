@@ -268,40 +268,6 @@ vercel
 
 ---
 
-## 🔄 Trade-offs & Decisions
-
-### No React Router
-**Decision:** Used simple `useState` for page navigation.  
-**Reason:** The app only has two views (list and detail). Adding React Router would introduce extra setup, URL params, and bundle size without meaningful benefit at this scale.  
-**Trade-off:** Deep linking to a specific invoice is not possible. If the app grows to have more pages, React Router should be added.
-
-### CSS Modules vs Plain CSS
-**Decision:** Used plain CSS files imported per-component.  
-**Reason:** Keeps things simple and readable for a project of this size. The naming convention (`component__element--modifier`) avoids class name clashes without needing CSS Modules.  
-**Trade-off:** Global class name collisions are possible if naming is not careful.
-
-### Context API vs Redux / Zustand
-**Decision:** Used React Context + `useState`.  
-**Reason:** The app has a single data source (invoices array) with straightforward CRUD. Context is built into React and avoids adding external dependencies.  
-**Trade-off:** Context re-renders all consumers on every change. For a large list (1000+ invoices) this could be slow, but is perfectly fine for this project.
-
-### LocalStorage vs Backend
-**Decision:** Used `localStorage` for persistence.  
-**Reason:** No server setup needed, works offline, zero cost to run.  
-**Trade-off:** Data is per-device and per-browser. Cannot sync across devices or users. A real app would use a backend (Node/Express or Next.js API routes) with a database.
-
-### Custom Dropdown vs Native Select
-**Decision:** Built a custom `PaymentTermsDropdown` component.  
-**Reason:** Native `<select>` cannot be styled to match the Figma design across all browsers/OS. The custom component gives full visual control.  
-**Trade-off:** More code to maintain. Must manually handle open/close, keyboard events, and ARIA.
-
----
-
-## 🔮 Improvements Beyond Requirements
-
-1. **Stagger animations** — Invoice cards animate in one-by-one using CSS `animation-delay`
----
-
 ## 📦 Dependencies
 
 | Package | Version | Purpose |
