@@ -1,6 +1,6 @@
 # 📄 Invoice App
 
-A fully responsive invoice management application built with React, based on the [Frontend Mentor Invoice App](https://www.frontendmentor.io/challenges/invoice-app-i7KaLTQjl) Figma design. Users can create, read, update, and delete invoices, save drafts, mark invoices as paid, filter by status, and toggle between light and dark mode.
+A fully responsive invoice management application built with React, based on the Figma design. Users can create, read, update, and delete invoices, save drafts, mark invoices as paid, filter by status, and toggle between light and dark mode.
 
 ---
 
